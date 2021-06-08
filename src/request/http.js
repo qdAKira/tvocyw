@@ -4,11 +4,11 @@ import router from './../router'
 
 // 环境的切换
 if (process.env.NODE_ENV == 'development') {
-	axios.defaults.baseURL = 'http://36.152.189.94:22083';
+	axios.defaults.baseURL = 'http://36.152.189.94:29002';
 } else if (process.env.NODE_ENV == 'debug') {
-	axios.defaults.baseURL = 'http://36.152.189.94:22083';
+	axios.defaults.baseURL = 'http://36.152.189.94:29002';
 } else if (process.env.NODE_ENV == 'production') {
-	axios.defaults.baseURL = 'http://36.152.189.94:22083';
+	axios.defaults.baseURL = 'http://36.152.189.94:29002';
 }
 
 // if (process.env.NODE_ENV == 'development') {

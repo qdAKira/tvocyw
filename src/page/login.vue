@@ -1,11 +1,11 @@
 <template>
 	<div class="login-mode">
 		<div class="login-title">
-			<img src="../../static/image/logo-1.png" alt="">
-			洋口园区水环境管理系统
+			<!-- <img src="../../static/image/logo-1.png" alt=""> -->
+			TVOC在线监测平台
 		</div>
 		<div class="login-text1"><span style="color: #4de8ff;">保护</span>环境</div>
-		<div class="login-text2">共建<span style="color: #1dff72;">生态洋口</span></div>
+		<div class="login-text2">共建<span style="color: #1dff72;">生态开发区</span></div>
 		<div class="login-form">
 			<div class="login-from-title">用户登录</div>
 			<a-form :form="form" @submit="handleSubmit">
@@ -149,10 +149,11 @@
 
 						this.setUserInfo(values)
 					} else {
+						console.log(res.message)
 						this.$message.error({
 							content: res.message,
 							key: 'loading',
-							duration: 1,
+							duration: 2,
 							onClose: () => {
 								this.$refs.sidentify.draw()
 							}

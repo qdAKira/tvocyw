@@ -32,7 +32,6 @@ if (sessionStorage.getItem('token') || localStorage.getItem('token')) {
 }
 
 router.beforeEach((to, from, next) => {
-	console.log(1)
 	if (to.meta.title) {
 		document.title = to.meta.title
 	}
@@ -53,21 +52,20 @@ router.beforeEach((to, from, next) => {
 					routerGo(to, next)
 				}
 			} else {
-				if (to.path == '/') {
-					if (localStorage.getItem('roleID') == 3) {
-						next({
-							path: '/media/company'
-						})
-					} else {
-						next({
-							path: '/media/home'
-						})
-					}
-				} else {
-					console.log(to.path)
-					console.log(router.options.routes)
-					next()
-				}
+				// if (to.path == '/') {
+				// 	if (localStorage.getItem('roleID') == 3) {
+				// 		next({
+				// 			path: '/media/company'
+				// 		})
+				// 	} else {
+				// 		next({
+				// 			path: '/media/home'
+				// 		})
+				// 	}
+				// } else {
+				// 	next()
+				// }
+				next()
 			}
 		}
 	} else {

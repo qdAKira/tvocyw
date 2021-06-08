@@ -47,7 +47,7 @@
 			</div>
 			<a-modal title="资源" :width="800" :visible="resVisible" maskClosable centered
 				:confirm-loading="confirmLoading2" @cancel="handleCancel2" @ok="handleOk2">
-				<div style="height: 900px;overflow-y: scroll;">
+				<div style="height: 700px;overflow-y: scroll;">
 					<a-tree v-model="checkedKeys" checkable :tree-data="treeData" defaultExpandAll />
 				</div>
 			</a-modal>

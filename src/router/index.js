@@ -18,11 +18,11 @@ import home from '@/page/media/home.vue'
 Vue.use(Router)
 
 var constantRouterMap = [{
-	path: '/layout',
+	path: '',
 	component: layout,
 	name: 'layout',
 	meta: {
-		title: '洋口园区水环境管理系统',
+		title: 'TVOC在线监测平台',
 		requireAuth: true
 	},
 	children: []
@@ -31,10 +31,10 @@ var constantRouterMap = [{
 	component: login,
 	name: 'login',
 	meta: {
-		title: '洋口园区水环境管理系统',
+		title: 'TVOC在线监测平台',
 	},
 }, {
-	path: '',
+	path: '/media',
 	component: media,
 	name: 'media',
 	meta: {
