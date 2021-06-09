@@ -143,7 +143,9 @@
 					PageSize: 25
 				}).then(res => {
 					if (res.status === '0') {
-						this.data = res.result.list
+						if (res.result) {
+							this.data = res.result.list
+						}
 					} else {
 						console.log(res.message)
 					}

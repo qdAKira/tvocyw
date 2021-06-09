@@ -170,7 +170,11 @@
 				this.columns = this.columns.concat(this.columnsDefault)
 				getSysParam(data).then(res => {
 					if (res.status === '0') {
-						this.dataHandle(res.result, this.pagination)
+						if (res.result) {
+							this.dataHandle(res.result, this.pagination)
+						} else{
+							this.pagination.total = 0
+						}
 					} else {
 						console.log(res.message)
 						this.pagination.total = 0

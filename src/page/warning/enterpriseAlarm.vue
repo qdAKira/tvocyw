@@ -175,12 +175,16 @@
 				this.loading = true
 				companyAlarms(data).then(res => {
 					if (res.status === '0') {
-						this.data = res.result.list
-						const pagination = {
-							...this.pagination
+						if (res.result) {
+							this.data = res.result.list
+							const pagination = {
+								...this.pagination
+							}
+							pagination.total = res.result.total
+							this.pagination = pagination
+						}else{
+							this.pagination.total = 0
 						}
-						pagination.total = res.result.total
-						this.pagination = pagination
 					} else {
 						console.log(res.message)
 					}

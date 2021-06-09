@@ -33,7 +33,7 @@
 						<sub-menu v-else :key="item.path" :menu-info="item" />
 					</template> -->
 				</a-menu>
-				<router-link class="components-media" :to="{path:'/'}">监控大屏</router-link>
+				<!-- <router-link class="components-media" :to="{path:'/'}">监控大屏</router-link> -->
 			</a-layout-sider>
 			<a-layout style="padding: 0 24px 24px 12px">
 				<div style="display: flex;align-items: center;">
@@ -181,6 +181,8 @@
 						localStorage.setItem('roleID', '')
 						localStorage.setItem('userID', '')
 						localStorage.setItem('userName', '')
+						localStorage.setItem('children', '')
+						localStorage.setItem('fakeRouter', '')
 						// localStorage.setItem('children', '')
 						this.$router.push('/login')
 					},

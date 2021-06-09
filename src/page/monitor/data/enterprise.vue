@@ -154,59 +154,12 @@
 						dataIndex: 'monitorTimeText',
 						align: 'center',
 					}, {
-						title: '门禁状态',
-						dataIndex: 'accessStatus',
-						scopedSlots: {
-							customRender: 'accessStatus'
-						},
-						align: 'center',
-					}, {
-						title: '排水阀状态',
-						dataIndex: 'drainValveStatus',
-						align: 'center',
-					}, {
-						title: '收集池阀门状态',
-						dataIndex: 'collectingTankValveStatus',
-						align: 'center',
-					}, {
-						title: '雨水收集池液位',
-						dataIndex: 'collectingTankLevel',
-						align: 'center',
-					}, {
 						title: '在线状态',
 						dataIndex: 'onlineStatus',
 						scopedSlots: {
 							customRender: 'onlineStatus'
 						},
 						align: 'center',
-					}, {
-						title: '瞬时量',
-						dataIndex: 'instantaneousQuantity',
-						scopedSlots: {
-							customRender: 'instantaneousQuantity'
-						},
-						align: 'center',
-					}, {
-						title: '日排放量',
-						dataIndex: 'dailyDischargeQuantity',
-						align: 'center',
-						scopedSlots: {
-							customRender: 'instantaneousQuantity'
-						},
-					}, {
-						title: '月排放量',
-						dataIndex: 'monthDischargeQuantity',
-						align: 'center',
-						scopedSlots: {
-							customRender: 'instantaneousQuantity'
-						},
-					}, {
-						title: '年排放量',
-						dataIndex: 'yearDischargeQuantity',
-						align: 'center',
-						scopedSlots: {
-							customRender: 'instantaneousQuantity'
-						},
 					}
 				],
 				loading: false,
@@ -308,19 +261,22 @@
 				this.columns = []
 				this.columns = this.columns.concat(this.columnsDefault)
 				companyMonitor(data).then(res => {
+					console.log(res)
 					if (res.status === '0') {
-						const factors = res.result.list[0].factors
-
-
-						factors.forEach((item, index) => {
-							this.columns.push({
-								title: item.factorName,
-								dataIndex: 'factors' + (index + 1),
-								align: 'center',
+						if (res.result) {
+							const factors = res.result.list[0].factors
+							
+							factors.forEach((item, index) => {
+								this.columns.push({
+									title: item.factorName,
+									dataIndex: 'factors' + (index + 1),
+									align: 'center',
+								})
 							})
-
-						})
-						this.dataHandle(res.result, this.pagination)
+							this.dataHandle(res.result, this.pagination)
+						}else{
+							this.pagination.total = 0
+						}
 					} else {
 						console.log(res.message)
 						this.pagination.total = 0

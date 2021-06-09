@@ -239,29 +239,33 @@
 				this.columns = this.columns.concat(this.columnsDefault)
 				minuteDatas(data).then(res => {
 					if (res.status === '0') {
-						const polluteDict = res.result.list[0].polluteDict
-						
-						const isFixed = Object.keys(polluteDict).length > 10
-						
-						this.scrollx = isFixed ? 600 : ''
-						
-						this.columns.forEach((item,index)=>{
-							item.fixed = isFixed
-							if (index && !isFixed) {
-								item.width = ''
-							}
-						})
-						
-						Object.keys(polluteDict).forEach(key => {
-							this.columns.push({
-								title: key,
-								dataIndex: key,
-								align: 'center',
-								width: isFixed ? 140 : ''
+						if (res.result) {
+							const polluteDict = res.result.list[0].polluteDict
+							
+							const isFixed = Object.keys(polluteDict).length > 10
+							
+							this.scrollx = isFixed ? 600 : ''
+							
+							this.columns.forEach((item,index)=>{
+								item.fixed = isFixed
+								if (index && !isFixed) {
+									item.width = ''
+								}
 							})
-							this.scrollx += isFixed ? 140 : ''
-						});
-						this.dataHandle(res.result, this.pagination)
+							
+							Object.keys(polluteDict).forEach(key => {
+								this.columns.push({
+									title: key,
+									dataIndex: key,
+									align: 'center',
+									width: isFixed ? 140 : ''
+								})
+								this.scrollx += isFixed ? 140 : ''
+							});
+							this.dataHandle(res.result, this.pagination)
+						} else{
+							this.pagination.total = 0
+						}
 					} else {
 						console.log(res.message)
 						this.pagination.total = 0
