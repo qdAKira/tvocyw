@@ -63,7 +63,8 @@
 		addRole,
 		putRole,
 		getRoleResources,
-		putRoleResources
+		putRoleResources,
+		newRoute
 	} from '@/request/api'
 
 	export default ({
@@ -139,6 +140,7 @@
 			getData(data) {
 				this.loading = true
 				getRolesList({
+					roleID: global.roleID,
 					PageIndex: 0,
 					PageSize: 25
 				}).then(res => {
@@ -298,6 +300,17 @@
 			handleCancel2() {
 				this.resVisible = false
 				this.checkedKeys = []
+			},
+			getNewRoute(){
+				newRoute({
+					roleID: this.roleId
+				}).then(res => {
+					if (res.status === '0') {
+						console.log(res.result)
+					} else {
+						console.log(res.message)
+					}
+				})
 			}
 		}
 	})

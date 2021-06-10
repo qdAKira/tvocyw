@@ -576,3 +576,6 @@ export const accessStatusRecordsTables = p => download('api/accessStatusRecords/
 
 // 导出市电状态记录报表
 export const cityElectricStatusRecordsTables = p => download('api/cityElectricStatusRecords/tables', p)
+
+// 路由更新
+export const newRoute = p => get('api/newRoute', p)
