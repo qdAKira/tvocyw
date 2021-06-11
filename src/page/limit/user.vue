@@ -361,6 +361,7 @@
 						values.regionID.forEach((item, index) => {
 							regionIDLevel += index ? '-' + item : item
 						})
+						console.log(values.role)
 						const data = {
 							userName: values.userName,
 							chineseUserName: values.chineseUserName ? values.chineseUserName : null,
@@ -374,6 +375,7 @@
 							companyName: Array.isArray(values.companyID) ? '' : values.companyID.label,
 							remarks: values.remarks ? values.remarks : ''
 						}
+						console.log(data)
 						if (this.editTile == '新增') {
 							this.addInterface(data)
 						} else {

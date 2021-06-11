@@ -225,16 +225,7 @@
 						dataIndex: 'mnNumber',
 						align: 'center',
 						width: 200
-					}, {
-						title: '阀门控制方式',
-						dataIndex: 'valveControlModel',
-						align: 'center',
-					}, {
-						title: '自动阀门依据',
-						dataIndex: 'automaticControlValve',
-						align: 'center',
-					},
-					{
+					},{
 						title: '操作',
 						scopedSlots: {
 							customRender: 'action'
