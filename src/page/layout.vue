@@ -175,16 +175,9 @@
 					title: '你确定要退出登录吗？',
 					centered: true,
 					onOk: () => {
-						localStorage.setItem('token', '')
-						localStorage.setItem('regoins', '')
-						localStorage.setItem('regionID', '')
-						localStorage.setItem('roleID', '')
-						localStorage.setItem('userID', '')
-						localStorage.setItem('userName', '')
-						localStorage.setItem('children', '')
-						localStorage.setItem('fakeRouter', '')
-						// localStorage.setItem('children', '')
+						localStorage.clear()
 						this.$router.push('/login')
+						location.reload()
 					},
 					onCancel() {
 						console.log('Cancel')
