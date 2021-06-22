@@ -3,7 +3,7 @@
 		<a-layout-header class="components-header">
 			<div class="components-logo" />
 			<div class="components-header-right">
-				<span class="components-header-title">TVOC在线监测平台</span>
+				<span class="components-header-title">空气质量在线监测平台</span>
 				<div class="components-header-system">
 					<!-- <div class="components-header-date">
 						<img src="../../static/test/tq-1.png" alt="">

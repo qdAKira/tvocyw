@@ -2,7 +2,7 @@
 	<div class="login-mode">
 		<div class="login-title">
 			<!-- <img src="../../static/image/logo-1.png" alt=""> -->
-			TVOC在线监测平台
+			空气质量在线监测平台
 		</div>
 		<div class="login-text1"><span style="color: #4de8ff;">保护</span>环境</div>
 		<div class="login-text2">共建<span style="color: #1dff72;">生态开发区</span></div>
@@ -307,8 +307,6 @@
 		font-size: 60px;
 		letter-spacing: 0px;
 		color: #fefefe;
-		/* text-align: center; */
-		/* text-shadow: 0 0 9px #00eaff; */
 		line-height: 1;
 		margin: 0 auto 15px;
 		display: flex;

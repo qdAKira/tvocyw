@@ -22,7 +22,7 @@ var constantRouterMap = [{
 	component: layout,
 	name: 'layout',
 	meta: {
-		title: 'TVOC在线监测平台',
+		title: '空气质量在线监测平台',
 		requireAuth: true
 	},
 	children: []
@@ -31,7 +31,7 @@ var constantRouterMap = [{
 	component: login,
 	name: 'login',
 	meta: {
-		title: 'TVOC在线监测平台',
+		title: '空气质量在线监测平台',
 	},
 }, {
 	path: '/media',
