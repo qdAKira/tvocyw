@@ -72,6 +72,7 @@
 		},
 		data() {
 			return {
+				factorArray:[],
 				roleID:global.roleID,
 				regionData: global.addDegoins,
 				RegionID: null,
@@ -234,9 +235,21 @@
 					console.log(res)
 					if (res.status === '0') {
 						if (res.result) {
-							const polluteDict = res.result.list[0].polluteDict
+							//const polluteDict = res.result.list[0].polluteDict
 							
-							const isFixed = Object.keys(polluteDict).length > 10
+							res.result.list.forEach((item,index)=>{
+								Object.keys(item.polluteDict).forEach(key=>{								
+									this.factorArray.push(key);														
+								})							
+							})
+							
+												   
+							this.factorArray=Array.from(new Set(this.factorArray));				
+							
+							console.log(this.factorArray);
+							
+							
+							const isFixed = Object.keys(this.factorArray).length > 10
 							
 							this.scrollx = isFixed ? 450 : ''
 							
@@ -247,10 +260,10 @@
 								}
 							})
 							
-							Object.keys(polluteDict).forEach(key => {
+							this.factorArray.forEach(value => {
 								this.columns.push({
-									title: key,
-									dataIndex: key,
+									title: value,
+									dataIndex: value,
 									align: 'center',
 									width: isFixed ? 140 : ''
 								})
@@ -295,7 +308,7 @@
 			},
 			dataHandle(data, pagination) {
 				data.list.forEach(item => {
-					item = Object.assign(item, item.polluteDict)
+					item = Object.assign(item, item.polluteDict)																	
 				})
 				this.loading = false
 				this.data = data.list

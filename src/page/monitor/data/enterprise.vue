@@ -108,6 +108,7 @@
 		},
 		data() {
 			return {
+				factorArray:[],
 				roleID: global.roleID,
 				regionData: global.addDegoins,
 				RegionID: null,
@@ -264,11 +265,22 @@
 					console.log(res)
 					if (res.status === '0') {
 						if (res.result) {
-							const factors = res.result.list[0].factors
+
 							
-							factors.forEach((item, index) => {
+							res.result.list.forEach((item,index)=>{	
+								item.factors.forEach((temp,index)=>{								
+									this.factorArray.push(temp.factorName);														
+								})							
+							})
+							
+												   
+							this.factorArray=Array.from(new Set(this.factorArray));				
+							
+							
+							
+							this.factorArray.forEach((item, index) => {
 								this.columns.push({
-									title: item.factorName,
+									title: item,
 									dataIndex: 'factors' + (index + 1),
 									align: 'center',
 								})
@@ -313,7 +325,13 @@
 				data.list.forEach(item => {
 					// item = Object.assign(item, item.polluteDict)
 					item.factors.forEach((fac, index) => {
-						item['factors' + (index + 1)] = fac.instantaneousQuantity
+						
+						this.factorArray.forEach((temp,index)=>{
+							if(temp==fac.factorName)								
+							{
+							    item['factors' + (index + 1)] = fac.instantaneousQuantity
+							}
+						})						
 					})
 				})
 				this.loading = false
