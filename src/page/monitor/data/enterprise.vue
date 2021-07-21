@@ -108,7 +108,6 @@
 		},
 		data() {
 			return {
-				factorArray:[],
 				roleID: global.roleID,
 				regionData: global.addDegoins,
 				RegionID: null,
@@ -211,6 +210,7 @@
 
 			getFactor().then(res => {
 				if (res.status === '0') {
+					console.log(res)
 					this.factorList = res.result
 				} else {
 					console.log(res.message)
@@ -265,22 +265,11 @@
 					console.log(res)
 					if (res.status === '0') {
 						if (res.result) {
-
+							const factors = res.result.list[0].factors
 							
-							res.result.list.forEach((item,index)=>{	
-								item.factors.forEach((temp,index)=>{								
-									this.factorArray.push(temp.factorName);														
-								})							
-							})
-							
-												   
-							this.factorArray=Array.from(new Set(this.factorArray));				
-							
-							
-							
-							this.factorArray.forEach((item, index) => {
+							factors.forEach((item, index) => {
 								this.columns.push({
-									title: item,
+									title: item.factorName,
 									dataIndex: 'factors' + (index + 1),
 									align: 'center',
 								})
@@ -325,13 +314,7 @@
 				data.list.forEach(item => {
 					// item = Object.assign(item, item.polluteDict)
 					item.factors.forEach((fac, index) => {
-						
-						this.factorArray.forEach((temp,index)=>{
-							if(temp==fac.factorName)								
-							{
-							    item['factors' + (index + 1)] = fac.instantaneousQuantity
-							}
-						})						
+						item['factors' + (index + 1)] = fac.instantaneousQuantity
 					})
 				})
 				this.loading = false

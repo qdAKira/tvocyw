@@ -6,17 +6,20 @@
 			<a-button type="danger" @click="delBatch">删除{{IdBatch.length ? '(' + IdBatch.length + ')' : ''}}</a-button>
 		</template>
 		<template slot="right">
-			<a-cascader :options="regionData" :fieldNames="fieldNames" placeholder="行政区区域" style="width: 150px" change-on-select
-			 @change="regionChange" />
-			<a-select show-search v-model="CompanyID" placeholder="企业" option-filter-prop="children" style="width: 150px">
-				<a-select-option v-for="item in companyList" :value="item.id" :key="item.id">{{item.companyName}}</a-select-option>
+			<a-cascader :options="regionData" :fieldNames="fieldNames" placeholder="行政区区域" style="width: 150px"
+				change-on-select @change="regionChange" />
+			<a-select show-search v-model="CompanyID" placeholder="企业" option-filter-prop="children"
+				style="width: 150px">
+				<a-select-option v-for="item in companyList" :value="item.id" :key="item.id">{{item.companyName}}
+				</a-select-option>
 			</a-select>
 			<a-input v-model="UserName" placeholder="用户名" />
 			<a-button type="primary" @click="search">查询</a-button>
 		</template>
 		<template slot="table">
-			<a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :loading="loading" :rowKey="record => record.id"
-			 size="middle" :pagination="pagination" :scroll="{ x: scrollx,y: scrolly }" :customRow="customRow">
+			<a-table :row-selection="rowSelection" :columns="columns" :data-source="data" :loading="loading"
+				:rowKey="record => record.id" size="middle" :pagination="pagination" :scroll="{ x: scrollx,y: scrolly }"
+				:customRow="customRow">
 				<span slot="number" slot-scope="text, record, index">
 					{{index + 1 }}
 				</span>
@@ -27,9 +30,11 @@
 		</template>
 		<template slot="fixed">
 			<div id="components-form-demo-advanced-search">
-				<a-modal class="ant-advanced-search-form" forceRender :maskClosable="false" :title="editTile" :visible="addVisible"
-				 :width="600" centered :confirm-loading="confirmLoading" @ok="handleOk" @cancel="handleCancel">
-					<a-form :form="addform" layout="inline" labelAlign="right" :labelCol="{span: 8, offset: 0}" :wrapperCol="{span: 16, offset: 0}">
+				<a-modal class="ant-advanced-search-form" forceRender :maskClosable="false" :title="editTile"
+					:visible="addVisible" :width="600" centered :confirm-loading="confirmLoading" @ok="handleOk"
+					@cancel="handleCancel">
+					<a-form :form="addform" layout="inline" labelAlign="right" :labelCol="{span: 8, offset: 0}"
+						:wrapperCol="{span: 16, offset: 0}">
 						<a-row :gutter="24">
 							<a-col :span="12" v-show="false">
 								<a-form-item>
@@ -38,7 +43,9 @@
 							</a-col>
 							<a-col :span="12">
 								<a-form-item label="用户名">
-									<a-input v-decorator="['userName', { rules: [{ required: true, message: '请输入用户名' }] }]" placeholder="用户名" />
+									<a-input
+										v-decorator="['userName', { rules: [{ required: true, message: '请输入用户名' }] }]"
+										placeholder="用户名" />
 								</a-form-item>
 							</a-col>
 							<a-col :span="12">
@@ -49,16 +56,21 @@
 							<a-col :span="12">
 								<a-form-item label="密码">
 									<div style="display: inline-flex;align-items: center;">
-										<a-input-password :disabled="passwordDisabled" v-decorator="['password', { rules: [{ required: !passwordDisabled, message: '请输入密码' }] }]"
-										 placeholder="密码" />
-										<a-button v-show="editTile == '修改'" type="link" @click="passwordDisabled = !passwordDisabled">{{passwordDisabled ? '修改' : '取消'}}</a-button>
+										<a-input-password :disabled="passwordDisabled"
+											v-decorator="['password', { rules: [{ required: !passwordDisabled, message: '请输入密码' }] }]"
+											placeholder="密码" />
+										<a-button v-show="editTile == '修改'" type="link"
+											@click="passwordDisabled = !passwordDisabled">
+											{{passwordDisabled ? '修改' : '取消'}}</a-button>
 									</div>
 								</a-form-item>
 							</a-col>
 							<a-col :span="12">
 								<a-form-item label="行政区">
-									<a-cascader :options="regionData2" :fieldNames="fieldNames2" placeholder="行政区区域" change-on-select v-decorator="['regionID', { rules: [{ required: true, message: '请选择行政区区域' }] }]"
-									 @change="regionChangeAdd" />
+									<a-cascader :options="regionData2" :fieldNames="fieldNames2" placeholder="行政区区域"
+										change-on-select
+										v-decorator="['regionID', { rules: [{ required: true, message: '请选择行政区区域' }] }]"
+										@change="regionChangeAdd" />
 								</a-form-item>
 							</a-col>
 							<a-col :span="12" v-show="false">
@@ -68,22 +80,27 @@
 							</a-col>
 							<a-col :span="12">
 								<a-form-item label="角色名称">
-									<a-select placeholder="角色" label-in-value option-filter-prop="children" v-decorator="['role', { rules: [{ required: true, message: '请选择角色' }] }]"
-									 @change="roleChange">
-										<a-select-option v-for="item in rolesLsit" :key="item.id">{{item.name}}</a-select-option>
+									<a-select placeholder="角色" label-in-value option-filter-prop="children"
+										v-decorator="['role', { rules: [{ required: true, message: '请选择角色' }] }]"
+										@change="roleChange">
+										<a-select-option v-for="item in rolesLsit" :key="item.id">{{item.name}}
+										</a-select-option>
 									</a-select>
 								</a-form-item>
 							</a-col>
 							<a-col :span="12">
 								<a-form-item label="企业名称">
-									<a-select :disabled="companyDisabled" show-search placeholder="企业" label-in-value option-filter-prop="children"
-									 v-decorator="['companyID',{ rules: [{ required: !companyDisabled, message: '请选择企业' }] }]">
-										<a-select-option v-for="item in companyList2" :key="item.id">{{item.companyName}}</a-select-option>
+									<a-select :disabled="companyDisabled" show-search placeholder="企业" label-in-value
+										option-filter-prop="children"
+										v-decorator="['companyID',{ rules: [{ required: !companyDisabled, message: '请选择企业' }] }]">
+										<a-select-option v-for="item in companyList2" :key="item.id">
+											{{item.companyName}}</a-select-option>
 									</a-select>
 								</a-form-item>
 							</a-col>
 							<a-col :span="24" style="padding-left: 6px;">
-								<a-form-item label="备注" :labelCol="{span: 4, offset: 0}" :wrapperCol="{span: 20, offset: 0}">
+								<a-form-item label="备注" :labelCol="{span: 4, offset: 0}"
+									:wrapperCol="{span: 20, offset: 0}">
 									<a-input v-decorator="['remarks']" placeholder="备注" />
 								</a-form-item>
 							</a-col>
@@ -148,8 +165,7 @@
 						title: '用户名',
 						dataIndex: 'userName',
 						align: 'center',
-						customCell: (record, index)=>{
-						}
+						customCell: (record, index) => {}
 					},
 					{
 						title: '中文用户名',
@@ -203,7 +219,7 @@
 				IdBatch: [],
 				rolesLsit: [],
 				companyDisabled: true,
-				regionName:''
+				regionName: ''
 			};
 		},
 		created() {
@@ -242,8 +258,8 @@
 					region: selectedOptions ? selectedOptions[selectedOptions.length - 1].regionName : ''
 				});
 				selectedOptions.forEach((item, index) => {
-					this.regionName  += index?'/'+ item.name: item.name
-				})				
+					this.regionName += index ? '/' + item.name : item.name
+				})
 				this.getCompanyAdd(value[value.length - 1])
 			},
 			// 获取企业列表方法
@@ -275,7 +291,8 @@
 					if (res.status === '0') {
 						if (res.result) {
 							this.data = res.result.list
-							const pagination = { ...this.pagination
+							const pagination = {
+								...this.pagination
 							}
 							pagination.total = res.result.total
 							this.pagination = pagination
@@ -287,7 +304,8 @@
 				})
 			},
 			pageChange(pagination, filters, sorter) {
-				const pager = { ...this.pagination
+				const pager = {
+					...this.pagination
 				}
 				pager.current = pagination.current
 				pager.pageSize = pagination.pageSize
@@ -418,8 +436,10 @@
 				this.passwordDisabled = true
 				this.regionData2 = global.addDegoins
 				this.addVisible = true;
-				if (data.roleID == 1 || data.roleID == 2) {
+				if (data.roleID == 1) {
 					this.companyDisabled = true
+				} else {
+					this.companyDisabled = false
 				}
 				this.addform.setFieldsValue({
 					userName: data.userName,
@@ -466,7 +486,8 @@
 			},
 			// 角色变化
 			roleChange(val) {
-				if (val.key == 1 || val.key == 2) {
+				console.log(val)
+				if (val.key == 1) {
 					this.companyDisabled = true
 					this.addform.setFieldsValue({
 						companyID: [],
@@ -483,11 +504,13 @@
 					roleID: this.roleID
 				}
 				exportUsers(data).then(res => {
-					let blob = new Blob([res],{type:'application/vnd.ms-excel'});
+					let blob = new Blob([res], {
+						type: 'application/vnd.ms-excel'
+					});
 					let url = window.URL.createObjectURL(blob); //表示一个指定的file对象或Blob对象
 					let a = document.createElement("a");
 					a.download = '用户报表'; //命名下载名称
-					a.style.display="none";
+					a.style.display = "none";
 					a.href = url;
 					document.body.appendChild(a);
 					a.click(); //点击触发下载  
@@ -498,7 +521,7 @@
 			tableHeight(data) {
 				this.scrolly = data - 75
 			},
-			customRow(record, index){
+			customRow(record, index) {
 				return {
 					style: {
 						backgroundColor: index % 2 ? '#fff' : '#f0f2f5'
