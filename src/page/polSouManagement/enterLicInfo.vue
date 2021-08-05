@@ -78,15 +78,16 @@
 						<a-col :span="12">
 							<a-form-item label="生效日期" :labelCol="{span: 8, offset: 0}"
 								:wrapperCol="{span: 16, offset: 0}">
-								<a-date-picker v-model="effectiveDate" style="width: 100%;"
-									:disabled-date="disabledStartDate" show-time format="YYYY-MM-DD HH:mm:ss"
+								<a-date-picker
+									v-decorator="['effectiveDate', { rules: [{ type: 'object', required: true, message: '请选择生效日期' }]}]"
+									style="width: 100%;" :disabled-date="disabledStartDate" show-time format="YYYY-MM-DD HH:mm:ss"
 									@openChange="handleStartOpenChange" placeholder="请选择生效日期" />
 							</a-form-item>
 						</a-col>
 						<a-col :span="12">
 							<a-form-item label="截止日期" :labelCol="{span: 8, offset: 0}"
 								:wrapperCol="{span: 16, offset: 0}">
-								<a-date-picker v-model="deadline" style="width: 100%;" :disabled-date="disabledEndDate"
+								<a-date-picker v-decorator="['deadline', { rules: [{ type: 'object', required: true, message: '请选择生效日期' }]}]" style="width: 100%;" :disabled-date="disabledEndDate"
 									show-time format="YYYY-MM-DD HH:mm:ss" :open="endOpen"
 									@openChange="handleEndOpenChange" placeholder="请选择截止日期" />
 							</a-form-item>
@@ -485,6 +486,7 @@
 								lowerLimit: item.lowerLimit
 							}
 						})
+						console.log(values)
 
 						values.companyName = values.companyID.label
 						values.companyID = values.companyID.key
@@ -535,7 +537,9 @@
 					companyID: [],
 					companyHoleID: [],
 					licenseCode: '',
-					licenseOrgan: ''
+					licenseOrgan: '',
+					deadline: null,
+					effectiveDate: null
 				});
 				this.effectiveDate = null,
 					this.deadline = null,
@@ -769,7 +773,6 @@
 				}
 			},
 			async toEdit(id) {
-
 				const companyId = await getBalanceDetailInfo({
 					id: id,
 				}).then(res => {
@@ -788,8 +791,8 @@
 							} : [],
 							licenseCode: data.licenseCode,
 							licenseOrgan: data.licenseOrgan,
-							//StartDate:moment(data.effectiveDate).format('YYYY-MM-DD HH:mm:ss'),
-							//EndDate:moment(data.deadline).format('YYYY-MM-DD HH:mm:ss')
+							effectiveDate:moment(data.effectiveDate).format('YYYY-MM-DD HH:mm:ss'),
+							deadline:moment(data.deadline).format('YYYY-MM-DD HH:mm:ss')
 
 						})
 						this.licenseID = data.id
@@ -797,8 +800,9 @@
 						this.factorsData.forEach((item, index) => {
 							item.key = index + 1
 						})
-						this.effectiveDate = this.$moment(data.effectiveDateText, 'YYYY-MM-DD HH:mm:ss')
-						this.deadline = this.$moment(data.deadlineText, 'YYYY-MM-DD HH:mm:ss')
+						console.log(this.$moment(data.effectiveDate, 'YYYY-MM-DD HH:mm:ss'))
+						// this.effectiveDate = this.$moment(data.effectiveDate, 'YYYY-MM-DD HH:mm:ss')
+						// this.deadline = this.$moment(data.deadlineText, 'YYYY-MM-DD HH:mm:ss')
 						this.licenseData = data
 						return data.companyID
 					} else {
