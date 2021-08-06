@@ -495,8 +495,8 @@
 						values.companyHoleID = values.companyHoleID.key
 						values.licenseCode = values.licenseCode
 						values.licenseOrgan = values.licenseOrgan
-						values.deadline = moment(this.deadline).format('YYYY-MM-DD HH:mm:ss')
-						values.effectiveDate = moment(this.effectiveDate).format('YYYY-MM-DD HH:mm:ss')
+						values.deadline = moment(values.deadline).format('YYYY-MM-DD HH:mm:ss')
+						values.effectiveDate = moment(values.deadline).format('YYYY-MM-DD HH:mm:ss')
 						let data = values
 						if (this.modalTitle == '修改') {
 							updateLicenses(data).then(res => {
