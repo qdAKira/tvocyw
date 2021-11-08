@@ -145,7 +145,7 @@
 				RegionID: this.regionID,
 				PageIndex: this.pagination.current - 1,
 				PageSize: this.pagination.pageSize,
-				companyId: this.roleID === '3' ? this.cID : this.CompanyID
+				companyId: this.roleID === '2' ? this.cID : this.CompanyID
 			}
 			// 获取第一页数据
 			this.getData(data)
@@ -200,7 +200,7 @@
 				this.pagination = pager
 				let data = {
 					RegionID: this.regionID,
-					CompanyID: this.roleID === '3' ? this.cID : this.CompanyID,
+					CompanyID: this.roleID === '2' ? this.cID : this.CompanyID,
 					StartTime: this.StartTime,
 					EndTime: this.EndTime,
 					PageIndex: pagination.current - 1,
@@ -214,7 +214,7 @@
 				this.data = []
 				let data = {
 					RegionID: this.regionID,
-					CompanyID: this.roleID === '3' ? this.cID : this.CompanyID,
+					CompanyID: this.roleID === '2' ? this.cID : this.CompanyID,
 					StartTime: this.StartTime,
 					EndTime: this.EndTime,
 					PageIndex: this.pagination.current - 1,
@@ -240,7 +240,7 @@
 				let data = {
 					StartTime: this.StartTime,
 					EndTime: this.EndTime,
-					CompanyID: this.roleID === '3' ? this.cID : this.CompanyID,
+					CompanyID: this.roleID === '2' ? this.cID : this.CompanyID,
 				}
 				companyAlarmsTables(data).then(res => {
 					let blob = new Blob([res], {

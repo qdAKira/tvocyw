@@ -176,7 +176,7 @@
 			};
 		},
 		created() {
-			if (this.roleID === '3') {
+			if (this.roleID === '2') {
 				this.getHole(this.cID)
 			}
 
@@ -204,7 +204,7 @@
 				pageIndex: this.pagination.current - 1,
 				pageSize: this.pagination.pageSize,
 				regionId: Number(this.regionID),
-				companyId: this.roleID === '3' ? this.cID : this.CompanyID
+				companyId: this.roleID === '2' ? this.cID : this.CompanyID
 			}
 			this.getFirstPage(data)
 
@@ -299,7 +299,7 @@
 				this.loading = true
 				let data = {
 					regionId: this.RegionID ? this.RegionID : this.regionID,
-					companyID: this.roleID === '3' ? this.cID : this.CompanyID,
+					companyID: this.roleID === '2' ? this.cID : this.CompanyID,
 					holeId: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					levelId: this.PollutedLevelID.constructor == Array ? '' : this.PollutedLevelID,
 					industryTypeId: this.IndustryTypeID.constructor == Array ? '' : this.IndustryTypeID,
@@ -331,7 +331,7 @@
 				this.data = []
 				let data = {
 					regionId: this.RegionID ? this.RegionID : this.regionID,
-					companyId: this.roleID === '3' ? this.cID : this.CompanyID,
+					companyId: this.roleID === '2' ? this.cID : this.CompanyID,
 					holeId: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					levelId: this.PollutedLevelID.constructor == Array ? '' : this.PollutedLevelID,
 					industryTypeId: this.IndustryTypeID.constructor == Array ? '' : this.IndustryTypeID,

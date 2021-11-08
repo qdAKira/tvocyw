@@ -113,7 +113,7 @@
 			// 获取企业列表
 			this.getCompany()
 
-			if (this.roleID === '3') {
+			if (this.roleID === '2') {
 				this.getHole(this.cID)
 			}
 
@@ -122,7 +122,7 @@
 				PageIndex: this.pagination.current - 1,
 				PageSize: this.pagination.pageSize,
 				RegionID: global.regionID,
-				companyId: this.roleID === '3' ? this.cID : this.CompanyID
+				companyId: this.roleID === '2' ? this.cID : this.CompanyID
 			}
 			// 获取第一页数据
 			this.getData(data)
@@ -194,7 +194,7 @@
 				this.pagination = pager
 				let data = {
 					RegionID: this.RegionID ? this.RegionID : this.regionID,
-					CompanyID: this.roleID === '3' ? this.cID : this.CompanyID,
+					CompanyID: this.roleID === '2' ? this.cID : this.CompanyID,
 					CompanyHoleID: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					StartTime: this.StartTime,
 					EndTime: this.EndTime,
@@ -209,7 +209,7 @@
 				this.data = []
 				let data = {
 					RegionID: this.RegionID ? this.RegionID : this.regionID,
-					CompanyID: this.roleID === '3' ? this.cID : this.CompanyID,
+					CompanyID: this.roleID === '2' ? this.cID : this.CompanyID,
 					CompanyHoleID: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					StartTime: this.StartTime,
 					EndTime: this.EndTime,

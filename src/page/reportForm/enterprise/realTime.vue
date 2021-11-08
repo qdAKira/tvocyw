@@ -150,7 +150,7 @@
 			// 获取企业列表
 			this.getCompany()
 			
-		    if(this.roleID==='3')
+		    if(this.roleID === '2')
 		    {
 		    	this.getHole(this.cID)
 		    }
@@ -176,7 +176,7 @@
 				PageIndex: this.pagination.current - 1,
 				PageSize: this.pagination.pageSize,
 				RegionID: this.regionID,
-				companyId:this.roleID==='3'?this.cID:this.CompanyID
+				companyId:this.roleID === '2'?this.cID:this.CompanyID
 			}
 			this.getFirstPage(data)
 
@@ -294,7 +294,7 @@
 				this.loading = true
 				let data = {
 					RegionID: this.RegionID ? this.RegionID : this.regionID,
-					CompanyID: this.roleID==='3'?this.cID:this.CompanyID,
+					CompanyID: this.roleID === '2'?this.cID:this.CompanyID,
 					CompanyHoleID: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					PollutedLevelID: this.PollutedLevelID.constructor == Array ? '' : this.PollutedLevelID,
 					IndustryTypeID: this.IndustryTypeID.constructor == Array ? '' : this.IndustryTypeID,
@@ -324,7 +324,7 @@
 				this.data = []
 				let data = {
 					RegionID: this.RegionID ? this.RegionID : this.regionID,
-					CompanyID:this.roleID==='3'?this.cID:this.CompanyID,
+					CompanyID:this.roleID === '2'?this.cID:this.CompanyID,
 					CompanyHoleID: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					PollutedLevelID: this.PollutedLevelID.constructor == Array ? '' : this.PollutedLevelID,
 					IndustryTypeID: this.IndustryTypeID.constructor == Array ? '' : this.IndustryTypeID,
@@ -338,7 +338,7 @@
 			download() {
  				let data = {
 					RegionID: this.RegionID ? this.RegionID : this.regionID,
-					CompanyID: this.roleID==='3'?this.cID:this.CompanyID,
+					CompanyID: this.roleID === '2'?this.cID:this.CompanyID,
 					CompanyHoleID: this.CompanyHoleID.constructor == Array ? '' : this.CompanyHoleID,
 					PollutedLevelID: this.PollutedLevelID.constructor == Array ? '' : this.PollutedLevelID,
 					IndustryTypeID: this.IndustryTypeID.constructor == Array ? '' : this.IndustryTypeID,

@@ -125,6 +125,7 @@
 					UserName: values.UserName,
 					Password: sha1(values.Password).toUpperCase()
 				}).then(res => {
+					console.log(res)
 					if (res.status == 0) {
 						localStorage.setItem('token', res.result.token)
 						localStorage.setItem('regoins', JSON.stringify(res.result.regoins))
