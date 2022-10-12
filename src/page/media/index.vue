@@ -1,8 +1,9 @@
 <template>
 	<div class="components-media">
+		<!-- 顶部 -->
 		<div class="components-media-heaher">
 			<div class="title">
-				<div class="link-cell left" v-if="roleID != 3">
+				<!-- <div class="link-cell left" v-if="roleID != 3">
 					<router-link class="link-a" :class="{active: active == 0}"
 						:style="{color: active == 0 ? '#00ecf6' : ''}" :to="{name:'home'}" @click.native="active = 0">首页
 					</router-link>
@@ -14,9 +15,9 @@
 						:style="{color: active == 2 ? '#00ecf6' : ''}" :to="{name: 'rain'}" @click.native="active = 2">
 						雨水监控
 					</router-link>
-				</div>
-				<span>洋口园区水环境管理系统</span>
-				<div class="link-cell" v-if="roleID != 3">
+				</div> -->
+				<span>空气质量在线监测平台</span>
+				<!-- <div class="link-cell" v-if="roleID != 3">
 					<router-link class="link-a" :class="{active: active == 3}"
 						:style="{color: active == 3 ? '#00ecf6' : ''}" :to="{name: 'balance'}"
 						@click.native="active = 3">水平衡
@@ -29,7 +30,7 @@
 						:style="{color: active == 5 ? '#00ecf6' : ''}" :to="{name: 'video'}" @click.native="active = 5">
 						视频监控
 					</router-link>
-				</div>
+				</div> -->
 			</div>
 			<div class="date">
 				<iframe v-if="roleID != 3" width="150" height="65" frameborder="0" scrolling="no" hspace="0"
@@ -43,14 +44,21 @@
 			<div class="edit" @click="edit"></div>
 			<div class="back" @click="back"></div>
 		</div>
+		<!-- 内容区 -->
+		<Home></Home>
 		<router-view />
 	</div>
 </template>
 
 <script>
+		// 处理时间
 	import moment from "moment"
-
+	// 引入首页
+	import Home from '@/page/media/home.vue'
 	export default {
+		components:{
+			Home
+		},
 		data() {
 			return {
 				active: 0,
@@ -67,34 +75,34 @@
 				this.dateTime = new Date()
 			}, 1000)
 
-			const pathName = this.$route.name
+			// const pathName = this.$route.name
 
-			switch (pathName) {
-				case 'home':
-					this.active = 0
-					break;
-				case 'sewage':
-					this.active = 1
-					break;
-				case 'rain':
-					this.active = 2
-					break;
-				case 'balance':
-					this.active = 3
-					break;
-				case 'surfaceWater':
-					this.active = 4
-					break;
-				case 'video':
-					this.active = 5
-					break;
-				default:
-					break;
-			}
+			// switch (pathName) {
+			// 	case 'home':
+			// 		this.active = 0
+			// 		break;
+			// 	case 'sewage':
+			// 		this.active = 1
+			// 		break;
+			// 	case 'rain':
+			// 		this.active = 2
+			// 		break;
+			// 	case 'balance':
+			// 		this.active = 3
+			// 		break;
+			// 	case 'surfaceWater':
+			// 		this.active = 4
+			// 		break;
+			// 	case 'video':
+			// 		this.active = 5
+			// 		break;
+			// 	default:
+			// 		break;
+			// }
 		},
 		methods: {
 			back() {
-				this.$router.push('/layout')
+				this.$router.push('/monitor/data/enterprise')
 			},
 			edit() {
 				this.$confirm({
@@ -129,7 +137,7 @@
 		min-width: 1920px;
 		min-height: 1080px;
 	}
-
+// 顶部样式
 	.components-media-heaher {
 		position: relative;
 		background-image: url(../../../static/image/media-head.png);
@@ -274,7 +282,7 @@
 		bottom: 350px;
 		right: 530px;
 		z-index: 100;
-		cursor: pointer;
+		cursor: pointer;//地图上小手
 
 		&.location {
 			bottom: 50px;

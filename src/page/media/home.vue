@@ -3,29 +3,36 @@
 		<Amap></Amap>
 		<survey ref="mediafixed1"></survey>
 		<totalBalance ref="mediafixed2"></totalBalance>
-		<surfaceWater ref="mediafixed3"></surfaceWater>
-		<overStandard @fullLoacl="fullLoacl($event)" ref="mediafixed4"></overStandard>
+		<!-- <surfaceWater ref="mediafixed3"></surfaceWater> -->
+		<!-- <overStandard @fullLoacl="fullLoacl($event)" ref="mediafixed4"></overStandard> -->
 		<warning ref="mediafixed5"></warning>
-		<a-icon v-show="fullShow" class="componets-media-full" :class="{location: islocaled}"
-			:style="{fontSize: '35px',color: '#fff'}" :type="isFull ? 'fullscreen-exit' : 'fullscreen'" @click="full" />
+		<!-- <a-icon v-show="fullShow" class="componets-media-full" :class="{location: islocaled}"
+			:style="{fontSize: '35px',color: '#fff'}" :type="isFull ? 'fullscreen-exit' : 'fullscreen'" @click="full" /> -->
 	</div>
 </template>
 
 <script>
+	//地图 
 	import Amap from "@/components/media/homeMap.vue"
+	// 园区概况
 	import survey from "@/components/media/home/survey.vue"
+	// 园区总体平衡情况（变更为排口数联网在线概况）
 	import totalBalance from "@/components/media/home/totalBalance.vue"
-	import surfaceWater from "@/components/media/home/surfaceWater.vue"
-	import overStandard from "@/components/media/home/overStandard.vue"
+	// 企业水平衡情况（该区域变更为，展示点位弹出框）
+	// import surfaceWater from "@/components/media/home/surfaceWater.vue"
+	// 当月超标情况（这个项目不需要引入）
+	// import overStandard from "@/components/media/home/overStandard.vue"
+	// 企业报警内容 http://36.152.189.94:29002/api/companyAlarms?RegionID=1&PageIndex=0&PageSize=20
 	import warning from "@/components/media/home/warning.vue"
 
 	export default {
+		name:'Home',
 		components: {
 			'Amap': Amap,
 			'survey': survey,
 			'totalBalance': totalBalance,
-			'surfaceWater': surfaceWater,
-			'overStandard': overStandard,
+			// 'surfaceWater': surfaceWater,
+			// 'overStandard': overStandard,
 			'warning': warning
 		},
 		data() {

@@ -121,7 +121,7 @@
 					}
 				}],
 				tabActive: 0,
-				loading: false,
+		
 				data: [],
 				pagination: {
 					defaultPageSize: 10,

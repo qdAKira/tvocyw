@@ -577,5 +577,17 @@ export const accessStatusRecordsTables = p => download('api/accessStatusRecords/
 // 导出市电状态记录报表
 export const cityElectricStatusRecordsTables = p => download('api/cityElectricStatusRecords/tables', p)
 
+// 获取排口联网在线概况信息
+export const getHoleInfo = () => get('/api/Home/getCount')
+
+// 获取首页点位企业信息
+export const getCompanyMonitorInfo = p =>get('/api/CompanyMonitor/getOne',p)
+
+// 获取首页报警信息
+export const getBaojingInfo = p=>get('/api/companyAlarms/getBaojing',p)
+
+// 获取首页预警信息
+export const getYujingInfo = p=>get('/api/companyAlarms/getYujing',p)
+
 // 路由更新
 export const newRoute = p => get('api/newRoute', p)

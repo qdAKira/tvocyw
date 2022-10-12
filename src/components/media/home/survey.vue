@@ -24,28 +24,36 @@
 				exportPercent: [],
 				incomePercent: [],
 				dom: null,
-				color: [{
+				color: [
+					{
 					a: '#0167e8',
 					b: '#13ace8'
-				}, {
+				},
+				 {
 					a: '#03b235',
 					b: '#01e842'
-				}, {
+				},
+				 {
 					a: '#ff6e02',
 					b: '#ffff00'
-				}, {
+				},
+				 {
 					a: '#020eff',
 					b: '#9a9fff'
-				}, {
+				},
+				 {
 					a: '#00b5cb',
 					b: '#7ff2ff'
-				}, {
+				},
+				 {
 					a: '#8f8a07',
 					b: '#f8f24f'
-				}, {
+				},
+				 {
 					a: '#8d078f',
 					b: '#fb11ff'
-				}]
+				}
+				]
 			}
 		},
 		created() {},
@@ -55,27 +63,39 @@
 			},
 			init(series) {
 				let option = {
+					// 系列切换组件，点击图例，
 					legend: {
 						textStyle: {
 							color: '#fff'
 						},
 						icon: 'rect',
-						right: 10,
-						orient: 'vertical',
-						itemGap: 35,
-						top: 45
+						// right: 10,
+						left:44,
+						orient: 'horizontal', //图例列表的布局朝向
+						itemGap: 50,
+						// top: 218,
+						top:185,
+						// 图例图形宽度
+						itemWith:15,
+						itemHeight:15,
+						// align:right,
+						align:'left',
 					},
+					// 调整图表的布局
 					grid: {
-						top: 40,
+						top: 30,
 						left: 60,
 						bottom: 40,
-						right: 100,
+						right: 50,
+						// right: 50,
 					},
 					xAxis: {
 						type: 'value',
+						// 是否显示坐标轴轴线
 						axisLine: {
 							show: false
 						},
+						//是否显示坐标轴刻度
 						axisTick: {
 							show: false
 						},
@@ -103,6 +123,7 @@
 							formatter: (value) => {
 								return '{img|' + '}';
 							},
+							// 富文本样式
 							rich: {
 								text: {
 									width: 50,
@@ -111,17 +132,20 @@
 									color: '#fff'
 								},
 								img: {
-									width: 31,
-									height: 347,
+									// width: 31,
+									// height: 347,
+									width: 25,
+									height: 133,
 									align: 'center',
 									backgroundColor: {
-										image: require('../../../../static/icon/survey-h.png')
+										image: require('../../../../static/icon1/survey-x.png')
 									}
 								}
 							}
 						}
 					},
 					tooltip: {
+						// 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
 						trigger: 'axis',
 						axisPointer: {
 							type: 'cross'
@@ -167,11 +191,13 @@
 									formatter: '{c}',
 									color: '#fff',
 									align: 'rgiht'
+									// align: 'left'
 								},
 								data: [obj[key]],
 								type: 'bar',
 								barGap: '70%',
 								barWidth: '30',
+								// barWidth: '25%',
 								itemStyle: {
 									normal: {
 										color: new this.$echarts.graphic.LinearGradient(0, 0,
@@ -186,8 +212,8 @@
 								}
 							})
 						})
-
-						this.init(series)
+						// 切割数组，取前3个
+						this.init(series.splice(0,3))
 						this.resize()
 
 					} else {
@@ -202,23 +228,23 @@
 						name = '企业数'
 						break;
 					case 'sewageHoleNumber':
-						name = '污水排口'
+						name = '排口数'
 						break;
 					case 'rainHoleNumber':
-						name = '雨水排口'
+						name = '联网在线数'
 						break;
-					case 'microSiteNumber':
-						name = '微型站'
-						break;
-					case 'fuBiaoSiteNumber':
-						name = '浮标站'
-						break;
-					case 'parkIncomeNumber':
-						name = '园区总进'
-						break;
-					case 'parkExportNumber':
-						name = '园区总排'
-						break;
+					// case 'microSiteNumber':
+					// 	name = '微型站'
+					// 	break;
+					// case 'fuBiaoSiteNumber':
+					// 	name = '浮标站'
+					// 	break;
+					// case 'parkIncomeNumber':
+					// 	name = '园区总进'
+					// 	break;
+					// case 'parkExportNumber':
+					// 	name = '园区总排'
+					// 	break;
 					default:
 						break;
 				}
@@ -238,8 +264,10 @@
 		left: 20px;
 		top: 10px;
 		width: 505px;
-		height: 475px;
-		background: url(../../../../static/image/yzgk-hone.png) no-repeat left bottom / 100% 455px;
+		// height: 475px;
+		height: 258px;
+		// background: url(../../../../static/image/yzgk-hone.png) no-repeat left bottom / 100% 455px;
+		background: url(../../../../static/icon1/yzgk-hone.png) no-repeat left bottom / 100% 238px;
 		transition: left 1s;
 		-webkit-transition: left 1s;
 

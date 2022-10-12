@@ -128,3 +128,5 @@ export const  getPollutedFactorByID = p => get('api/companyHoles/pollutedFactors
 //获取外环境污染物因子
 export const  pollutedFactorByWell = p => get('api/pollutedFactorsByWell', p)
 
+
+

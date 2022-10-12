@@ -40,70 +40,70 @@ var constantRouterMap = [{
 	meta: {
 		requireAuth: true
 	},
-	children: [{
-		path: '/media/summary',
-		component: summary,
-		name: 'summary',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/sewage',
-		component: sewage,
-		name: 'sewage',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/rain',
-		component: rain,
-		name: 'rain',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/balance',
-		component: balance,
-		name: 'balance',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/waterBalance',
-		component: waterBalance,
-		name: 'waterBalance',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/surfaceWater',
-		component: surfaceWater,
-		name: 'surfaceWater',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/video',
-		component: video,
-		name: 'video',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/home',
-		component: home,
-		name: 'home',
-		meta: {
-			requireAuth: true
-		},
-	}, {
-		path: '/media/company',
-		component: company,
-		name: 'company',
-		meta: {
-			requireAuth: true
-		},
-	}]
+	// children: [{
+	// 	path: '/media/summary',
+	// 	component: summary,
+	// 	name: 'summary',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/sewage',
+	// 	component: sewage,
+	// 	name: 'sewage',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/rain',
+	// 	component: rain,
+	// 	name: 'rain',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/balance',
+	// 	component: balance,
+	// 	name: 'balance',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/waterBalance',
+	// 	component: waterBalance,
+	// 	name: 'waterBalance',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/surfaceWater',
+	// 	component: surfaceWater,
+	// 	name: 'surfaceWater',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/video',
+	// 	component: video,
+	// 	name: 'video',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/home',
+	// 	component: home,
+	// 	name: 'home',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }, {
+	// 	path: '/media/company',
+	// 	component: company,
+	// 	name: 'company',
+	// 	meta: {
+	// 		requireAuth: true
+	// 	},
+	// }]
 }]
 
 export default new Router({

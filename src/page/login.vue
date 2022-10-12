@@ -56,7 +56,7 @@
 				</div>
 			</a-form>
 		</div>
-		<div class="login-tips">@版权所有 江苏尚维斯环境科技有限公司</div>
+		<div class="login-tips">@版权所有 江苏尚维斯环境科技股份有限公司</div>
 	</div>
 </template>
 <script>
@@ -209,7 +209,7 @@
 								duration: 0.5,
 								onClose: () => {
 									this.$router.push({
-										path: '/'
+										path: '/media'
 									})
 								}
 							})

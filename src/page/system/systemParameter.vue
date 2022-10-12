@@ -16,7 +16,7 @@
 			</a-table>
 
  -->
-
+			<!-- 分页器 -->
 			<a-table style="height: 100%;" :columns="columns" :data-source="data" :loading="loading" :scroll="{ x: scrollx,y: scrolly }"
 			 :rowKey="record => record.id" size="middle" :pagination="pagination" @change="pageChange" :customRow="customRow">
 				<span slot="number" slot-scope="text, record, index">
