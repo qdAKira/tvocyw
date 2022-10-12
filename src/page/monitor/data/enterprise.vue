@@ -148,10 +148,13 @@
 						title: '排口名称',
 						dataIndex: 'holeName',
 						align: 'center',
-					},
-					{
+					}, {
 						title: '监测时间',
 						dataIndex: 'monitorTimeText',
+						align: 'center',
+					}, {
+						title: '数据时间',
+						dataIndex: 'dataTimeText',
 						align: 'center',
 					}, {
 						title: '在线状态',
@@ -266,7 +269,7 @@
 					if (res.status === '0') {
 						if (res.result) {
 							const factors = res.result.list[0].factors
-							
+
 							factors.forEach((item, index) => {
 								this.columns.push({
 									title: item.factorName,
@@ -275,7 +278,7 @@
 								})
 							})
 							this.dataHandle(res.result, this.pagination)
-						}else{
+						} else {
 							this.pagination.total = 0
 						}
 					} else {
