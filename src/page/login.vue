@@ -60,7 +60,7 @@
 	</div>
 </template>
 <script>
-	let sha1 = require('sha1')
+	// let sha1 = require('sha1')
 
 	const Base64 = require('js-base64').Base64
 
@@ -123,31 +123,34 @@
 				})
 				await apiLogin({
 					UserName: values.UserName,
-					Password: sha1(values.Password).toUpperCase()
+					// Password: sha1(values.Password).toUpperCase()
+					Password:values.Password,
 				}).then(res => {
 					console.log(res)
 					if (res.status == 0) {
 						localStorage.setItem('token', res.result.token)
-						localStorage.setItem('regoins', JSON.stringify(res.result.regoins))
-						localStorage.setItem('regionID', res.result.regionID)
-						localStorage.setItem('roleID', res.result.roleID)
-						localStorage.setItem('userID', res.result.userID)
+						// localStorage.setItem('regoins', JSON.stringify(res.result.regoins))
+						// localStorage.setItem('regionID', res.result.regionID)
+						// localStorage.setItem('roleID', res.result.roleID)
+						// localStorage.setItem('userID', res.result.userID)
 						localStorage.setItem('userName', res.result.userName)
-						localStorage.setItem('companyID', res.result.companyID)
+						// localStorage.setItem('companyID', res.result.companyID)
 						localStorage.setItem('chineseUserName', res.result.chineseUserName)
-						global.regoins = JSON.parse(localStorage.getItem('regoins'))
-						global.regionID = localStorage.getItem('regionID')
-						global.userID = localStorage.getItem('userID')
-						global.roleID = localStorage.getItem('roleID')
-						global.companyID = localStorage.getItem('companyID')
+						// global.regoins = JSON.parse(localStorage.getItem('regoins'))
+						// global.regionID = localStorage.getItem('regionID')
+						// global.userID = localStorage.getItem('userID')
+						// global.roleID = localStorage.getItem('roleID')
+						// global.companyID = localStorage.getItem('companyID')
 						global.chineseUserName = localStorage.getItem('chineseUserName')
 
-						let fakeRouter = res.result.routeUrl
-						this.fakeRouterUp(fakeRouter)
+						// let fakeRouter = res.result.routeUrl
+						// this.fakeRouterUp(fakeRouter)
 						
-						localStorage.setItem('fakeRouter', JSON.stringify(fakeRouter))
-						localStorage.setItem('children', JSON.stringify(fakeRouter))
-
+						// localStorage.setItem('fakeRouter', JSON.stringify(fakeRouter))
+						// localStorage.setItem('children', JSON.stringify(fakeRouter))
+						
+						// this.$router.push({path: '/'})
+						
 						this.setUserInfo(values)
 					} else {
 						console.log(res.message)
@@ -161,60 +164,83 @@
 						})
 					}
 				})
-				if (global.regionID) {
-					addDegoins({
-						regionID: global.regionID
-					}).then(res => {
-						if (res.status === '0') {
-							let degoinsGrade = []
-							let n = 0
-							try {
-								res.result.forEach((item, index, array) => {
-									if (index == 0) {
-										degoinsGrade.push([])
-									}
-									degoinsGrade[n].push(item)
-									if (index == array.length - 1) {
-										throw new Error("End");
-									}
-									if (item.regoinLevel != array[index + 1].regoinLevel) {
-										degoinsGrade.push([])
-										n++
-									}
-								})
-							} catch (e) {
-								if (e.message != "End") throw e;
-							}
-							degoinsGrade.reverse().forEach((item, index, array) => {
-								if (index > 0) {
-									item.forEach(next => {
-										if (next.child == undefined) {
-											next.child = new Array
-										}
-										array[index - 1].forEach(child => {
-											if (next.id == child.parentID) {
-												next.child.push(child)
-											}
-										})
-									})
-								}
-							})
+				// if (global.regionID) {
+				// 	addDegoins({
+				// 		regionID: global.regionID
+				// 	}).then(res => {
+				// 		if (res.status === '0') {
+				// 			let degoinsGrade = []
+				// 			let n = 0
+				// 			try {
+				// 				res.result.forEach((item, index, array) => {
+				// 					if (index == 0) {
+				// 						degoinsGrade.push([])
+				// 					}
+				// 					degoinsGrade[n].push(item)
+				// 					if (index == array.length - 1) {
+				// 						throw new Error("End");
+				// 					}
+				// 					if (item.regoinLevel != array[index + 1].regoinLevel) {
+				// 						degoinsGrade.push([])
+				// 						n++
+				// 					}
+				// 				})
+				// 			} catch (e) {
+				// 				if (e.message != "End") throw e;
+				// 			}
+				// 			degoinsGrade.reverse().forEach((item, index, array) => {
+				// 				if (index > 0) {
+				// 					item.forEach(next => {
+				// 						if (next.child == undefined) {
+				// 							next.child = new Array
+				// 						}
+				// 						array[index - 1].forEach(child => {
+				// 							if (next.id == child.parentID) {
+				// 								next.child.push(child)
+				// 							}
+				// 						})
+				// 					})
+				// 				}
+				// 			})
 
-							localStorage.setItem('addDegoins', JSON.stringify(degoinsGrade.reverse()[0]))
-							global.addDegoins = JSON.parse(localStorage.getItem('addDegoins'))
+				// 			localStorage.setItem('addDegoins', JSON.stringify(degoinsGrade.reverse()[0]))
+				// 			global.addDegoins = JSON.parse(localStorage.getItem('addDegoins'))
 
-							this.$message.success({
+				// 			this.$message.success({
+				// 				content: '登录成功!',
+				// 				key: 'loading',
+				// 				duration: 0.5,
+				// 				onClose: () => {
+				// 					this.$router.push({
+				// 						path: '/'
+				// 					})
+				// 				}
+				// 			})
+				// 		} else {
+				// 			this.$message.error({
+				// 				content: res.message,
+				// 				key: 'loading',
+				// 				duration: 0.5,
+				// 				onClose: () => {
+				// 					this.$refs.sidentify.draw()
+				// 				}
+				// 			})
+				// 		}
+				// 	})
+				// }
+				if(global.chineseUserName){
+					this.$message.success({
 								content: '登录成功!',
 								key: 'loading',
 								duration: 0.5,
 								onClose: () => {
 									this.$router.push({
-										path: '/media'
+										path: '/dashboard'
 									})
 								}
 							})
-						} else {
-							this.$message.error({
+				}else{
+					this.$message.error({
 								content: res.message,
 								key: 'loading',
 								duration: 0.5,
@@ -222,8 +248,6 @@
 									this.$refs.sidentify.draw()
 								}
 							})
-						}
-					})
 				}
 			},
 			// 获取cookie
